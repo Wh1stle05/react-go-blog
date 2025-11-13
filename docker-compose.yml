@@ -4,7 +4,7 @@ services:
   frontend:
     build: ./techspace-frontend
     ports:
-      - "3000:5173"      # 前端端口映射
+      - "3001:5173"      # 前端端口映射
     volumes:
       - ./techspace-frontend:/app  # 本地挂载，热更新
       - /app/node_modules
