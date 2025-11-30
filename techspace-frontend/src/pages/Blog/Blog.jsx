@@ -6,6 +6,7 @@ import PageTitle from '../../components/PageTitle/PageTitle.jsx';
 import Card from '../../components/Card/Card.jsx';
 import Body from '../../components/Body/Body.jsx';
 import { getBlogs } from '../../services/blogService.js';
+import PageWrapper from '../../components/PageWrapper/PageWrapper.jsx';
 
 function Blog() {
   const [blogs, setBlogs] = useState([]);
@@ -29,30 +30,35 @@ function Blog() {
 
   if (loading) {
     return (
-      <Body>
-        <PageContainer>
-          <PageTitle>博客文章</PageTitle>
-          <div>加载中...</div>
-        </PageContainer>
-      </Body>
+      <PageWrapper>
+        <Body>
+          <PageContainer>
+            <PageTitle>博客文章</PageTitle>
+            <div>加载中...</div>
+          </PageContainer>
+        </Body>
+      </PageWrapper>
     );
   }
 
   if (error) {
     return (
-      <Body>
-        <PageContainer>
-          <PageTitle>博客文章</PageTitle>
-          <div>错误: {error}</div>
-        </PageContainer>
-      </Body>
+      <PageWrapper>
+        <Body>
+          <PageContainer>
+            <PageTitle>博客文章</PageTitle>
+            <div>错误: {error}</div>
+          </PageContainer>
+        </Body>
+      </PageWrapper>
     );
   }
 
   return (
-    <Body>
-      <PageContainer>
-        <PageTitle>博客文章</PageTitle>
+    <PageWrapper>
+      <Body>
+        <PageContainer>
+          <PageTitle>博客文章</PageTitle>
 
         <div className={styles.grid}>
           {blogs.map((blog) => (
@@ -69,6 +75,7 @@ function Blog() {
         </div>
       </PageContainer>
     </Body>
+  </PageWrapper>
   );
 }
 

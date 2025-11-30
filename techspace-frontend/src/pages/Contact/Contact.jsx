@@ -3,6 +3,7 @@ import styles from './Contact.module.css';
 import PageContainer from '../../components/PageContainer/PageContainer.jsx';
 import PageTitle from '../../components/PageTitle/PageTitle.jsx';
 import Body from '../../components/Body/Body.jsx';
+import PageWrapper from '../../components/PageWrapper/PageWrapper.jsx';
 function Contact() {
   const [formData, setFormData] = useState({
     name: '',
@@ -24,13 +25,14 @@ function Contact() {
   };
 
   return (
-    <Body className={styles.contact}>
-      <PageContainer>
+    <PageWrapper>
+      <Body>
+        <PageContainer>
         <PageTitle>联系我</PageTitle>
         <form onSubmit={handleSubmit}>
           <div className={styles.formGroup}>
             <label className={styles.label}>称呼：</label>
-            <input
+            <input className={styles.input}
               type="text"
               name="name"
               value={formData.name}
@@ -39,8 +41,9 @@ function Contact() {
             />
           </div>
           <div className={styles.formGroup}>
-            <label className={styles.label}>邮箱：</label>
-            <input
+            <label className={styles.label}>邮箱：<div className={styles.required}>*</div>
+            </label>
+            <input className={styles.input}
               type="email"
               name="email"
               value={formData.email}
@@ -50,8 +53,8 @@ function Contact() {
             />
           </div>
           <div className={styles.formGroup}>
-            <label className={styles.label}>留言：</label>
-            <textarea
+            <label className={styles.label}>留言：<div className={styles.required}>*</div></label>
+            <textarea className={styles.input}
               name="message"
               value={formData.message}
               onChange={handleChange}
@@ -64,6 +67,7 @@ function Contact() {
         </form>
       </PageContainer>  
     </Body>
+  </PageWrapper>
   );
 }
 

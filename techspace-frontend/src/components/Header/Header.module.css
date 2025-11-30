@@ -42,7 +42,7 @@
   display: flex;
   justify-content: space-between; /* Logo 在左，导航链接在右 */
   align-items: center;
-  max-width: 1200px;
+  max-width: 1700px;
   margin: 0 auto;
   height: 80px;
   padding: 0 2rem; /* 将 padding 从 header 移到 navContainer */

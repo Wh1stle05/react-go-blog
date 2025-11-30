@@ -5,6 +5,7 @@ import PageContainer from '../../components/PageContainer/PageContainer.jsx';
 import PageTitle from '../../components/PageTitle/PageTitle.jsx';
 import Body from '../../components/Body/Body.jsx';
 import { getBlogById } from '../../services/blogService.js';
+import PageWrapper from '../../components/PageWrapper/PageWrapper.jsx';
 
 function BlogDetail() {
   const { id } = useParams();
@@ -81,26 +82,28 @@ function BlogDetail() {
   };
 
   return (
-    <Body>
-      <PageContainer>
-        <div className={styles.blogHeader}>
-          <PageTitle>{blog.title}</PageTitle>
-          <div className={styles.blogMeta}>
-            <span>作者: {blog.author}</span>
-            <span>发布时间: {new Date(blog.created_at).toLocaleDateString()}</span>
-            <span>浏览量: {blog.view_count}</span>
+    <PageWrapper>
+      <Body>
+        <PageContainer>
+          <div className={styles.blogHeader}>
+            <PageTitle>{blog.title}</PageTitle>
+            <div className={styles.blogMeta}>
+              <span>作者: {blog.author}</span>
+              <span>发布时间: {new Date(blog.created_at).toLocaleDateString()}</span>
+              <span>浏览量: {blog.view_count}</span>
+            </div>
+            <div className={styles.blogTags}>
+              {blog.tags.map((tag, index) => (
+                <span key={index} className={styles.tag}>{tag}</span>
+              ))}
+            </div>
           </div>
-          <div className={styles.blogTags}>
-            {blog.tags.map((tag, index) => (
-              <span key={index} className={styles.tag}>{tag}</span>
-            ))}
+          <div className={styles.blogContent}>
+            {formatContent(blog.content)}
           </div>
-        </div>
-        <div className={styles.blogContent}>
-          {formatContent(blog.content)}
-        </div>
-      </PageContainer>
-    </Body>
+        </PageContainer>
+      </Body>
+    </PageWrapper>
   );
 }
 

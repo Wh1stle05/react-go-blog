@@ -5,6 +5,7 @@ import styles from './About.module.css';
 import PageContainer from '../../components/PageContainer/PageContainer.jsx';
 import PageTitle from '../../components/PageTitle/PageTitle.jsx';
 import MdCard from '../../components/mdCard/mdCard.jsx';
+import PageWrapper from '../../components/PageWrapper/PageWrapper.jsx';
 function About() {
   const [mdContent, setMdContent] = useState('');
 
@@ -16,19 +17,21 @@ function About() {
   }, []);
 
   return (
-    <div className={styles.about}>
-      <PageContainer>
-        <PageTitle>关于我</PageTitle>
-        <MdCard>
-          <div className="markdown-content">
-          
-            <ReactMarkdown remarkPlugins={[remarkGfm]}>
-              {mdContent || '加载中...'}
-            </ReactMarkdown>
-          </div>
-        </MdCard>
-      </PageContainer>
-    </div>
+    <PageWrapper>
+      <div className={styles.about}>
+        <PageContainer>
+          <PageTitle>关于我</PageTitle>
+          <MdCard>
+            <div className="markdown-content">
+            
+              <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                {mdContent || '加载中...'}
+              </ReactMarkdown>
+            </div>
+          </MdCard>
+        </PageContainer>
+      </div>
+    </PageWrapper>
   );
 }
 

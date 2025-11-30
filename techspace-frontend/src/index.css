@@ -1,54 +1,17 @@
 :root {
-  --text-color: #213547;
-  --accent-color: #646cff;
-  --accent-hover: #535bf2;
-
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  color-scheme: light;
   color: var(--text-color);
   background-color: transparent;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: var(--accent-color);
-  text-decoration: none;
-}
-a:hover {
-  color: var(--accent-hover);
 }
 
 body {
-  /* 基础布局与重置 */
-  margin: 0;                         /* 移除默认外边距 */
-  padding: 2rem;                     /* 页面整体内边距 */
-  width: 100%;                       /* 占满整个视口宽度 */
-  min-width: 320px;                  /* 保证移动端最小宽度 */
-  min-height: 100vh;                 /* 保证高度撑满视口 */
-  box-sizing: border-box;            /* 让 padding 计入总宽高，防止布局错位 */
-
-  /* Flex 布局（用于垂直排列内容） */
-  flex-direction: column;            /* 元素从上到下排列 */
-  align-items: center;               /* 内容水平居中 */
-  justify-content: flex-start;       /* 内容从顶部开始排列 */
-
-  /* 背景设置 */
-  background: url('/images/bg2.jpg') center center / cover no-repeat fixed;
-  /* 
-    url(...)             -> 背景图片路径（放在 public/images/bg2.jpg）
-    center center        -> 图片在视口居中
-    cover                -> 图片自动缩放铺满整个页面
-    no-repeat            -> 不重复
-    fixed                -> 背景固定不随滚动移动
-  */
-  
-  background-color: transparent;     /* 避免背景被白色覆盖（重要） */
-  padding-top: 80px;                 /* 为固定导航栏预留空间 */
+  margin: 0;
+  padding: 2rem;
+  min-height: 100vh;
+  box-sizing: border-box;
+  background: url('/images/bg2.jpg') center/cover no-repeat fixed;
+  padding-top: 80px;
 }
 
