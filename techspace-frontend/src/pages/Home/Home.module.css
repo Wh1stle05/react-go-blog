@@ -11,24 +11,29 @@
 
 /* 页面标题 */
 .pageTitle {
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   font-size: 3rem;
-  font-weight: 700;
-  color: #ffffff;
+  font-weight: 800;
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #bae6fd 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   margin-bottom: 1.5rem;
-  text-align: center;       /* 标题居中 */
+  text-align: center;
+  letter-spacing: -0.5px;
 }
 
 /* 页面副标题 - 文字左对齐，但整体居中 */
 .pageSubtitle {
   font-size: 1.25rem;
-  color: #ffffff;
+  color: #e0f2fe;
   margin-bottom: 3rem;
   line-height: 1.8;
-  text-align: left;         /* 文字左对齐 */
+  text-align: left;
   max-width: 600px;
-  margin-left: auto;        /* 整体居中 */
-  margin-right: auto;       /* 整体居中 */
+  margin-left: auto;
+  margin-right: auto;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
 }
 
 /* 网格布局 */

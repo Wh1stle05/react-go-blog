@@ -4,11 +4,12 @@ import remarkGfm from 'remark-gfm';
 import styles from './About.module.css';
 import PageContainer from '../../components/PageContainer/PageContainer.jsx';
 import PageTitle from '../../components/PageTitle/PageTitle.jsx';
+import MdCard from '../../components/mdCard/mdCard.jsx';
 function About() {
   const [mdContent, setMdContent] = useState('');
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/about-md') // 后端接口
+    fetch('http://localhost:5001/api/about-md') // 后端接口
       .then(res => res.text())
       .then(text => setMdContent(text))
       .catch(err => console.error('Failed to fetch markdown:', err));
@@ -18,9 +19,14 @@ function About() {
     <div className={styles.about}>
       <PageContainer>
         <PageTitle>关于我</PageTitle>
-        <ReactMarkdown remarkPlugins={[remarkGfm]}>
-          {mdContent || '加载中...'}
-        </ReactMarkdown>
+        <MdCard>
+          <div className="markdown-content">
+          
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>
+              {mdContent || '加载中...'}
+            </ReactMarkdown>
+          </div>
+        </MdCard>
       </PageContainer>
     </div>
   );

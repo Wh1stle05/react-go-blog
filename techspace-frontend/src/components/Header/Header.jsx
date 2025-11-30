@@ -36,7 +36,7 @@ function Header() {
     <header className={`${styles.header} ${isHidden ? styles.hidden : ''}`}>
       <nav className={styles.navContainer}>
         <Link to="/" className={styles.logo}>
-          TechSpace
+          Wh1stle 的小站
         </Link>
         
         <div className={styles['nav-links']}>

@@ -1,33 +1,37 @@
 .Card {
-  background: #163633;
-  border-radius: 8px;
+  background: rgba(22, 54, 51, 0.7);
+  border-radius: 16px;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   padding: 2rem;
   margin-bottom: 1.5rem;
-  border: 1px solid #e5e7eb;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  text-align: left;         /* 卡片内文字左对齐 */
-  border: none; /* 去掉边框 */
-  outline: none; /* 去掉焦点轮廓 */
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  text-align: left;
+  outline: none;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .Card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  transform: translateY(-8px) scale(1.02);
+  background: rgba(22, 54, 51, 0.8);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(94, 234, 212, 0.3);
 }
 
 /* 卡片标题 */
 .CardTitle {
   font-size: 1.5rem;
-  font-weight: 600;
-  color: #ffffff;
+  font-weight: 700;
+  color: #f8fafc;
   margin-bottom: 1rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 /* 卡片内容 */
 .CardContent {
-  color: #ffffff;
+  color: #e2e8f0;
   line-height: 1.7;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .CardContent p {

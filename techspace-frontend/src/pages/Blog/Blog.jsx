@@ -1,35 +1,75 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import styles from './Blog.module.css';
 import PageContainer from '../../components/PageContainer/PageContainer.jsx';
 import PageTitle from '../../components/PageTitle/PageTitle.jsx';
 import Card from '../../components/Card/Card.jsx';
 import Body from '../../components/Body/Body.jsx';
+import { getBlogs } from '../../services/blogService.js';
+
 function Blog() {
+  const [blogs, setBlogs] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      try {
+        const blogsData = await getBlogs();
+        setBlogs(blogsData);
+        setLoading(false);
+      } catch (err) {
+        setError(err.message);
+        setLoading(false);
+      }
+    };
+
+    fetchBlogs();
+  }, []);
+
+  if (loading) {
+    return (
+      <Body>
+        <PageContainer>
+          <PageTitle>博客文章</PageTitle>
+          <div>加载中...</div>
+        </PageContainer>
+      </Body>
+    );
+  }
+
+  if (error) {
+    return (
+      <Body>
+        <PageContainer>
+          <PageTitle>博客文章</PageTitle>
+          <div>错误: {error}</div>
+        </PageContainer>
+      </Body>
+    );
+  }
+
   return (
     <Body>
       <PageContainer>
         <PageTitle>博客文章</PageTitle>
 
         <div className={styles.grid}>
-          <Card
-            title="文章1：React入门指南"
-            items={[
-              "这是一篇关于React入门的指南，介绍了React的基本概念、组件化开发、JSX语法等。",
-              "文章适合初学者，帮助他们快速上手React开发。"
-            ]}
-          />
-          <Card
-            title="文章2：go入门指南"
-            items={[
-              "这是一篇关于Go语言入门的指南，介绍了Go的基本语法、并发编程、标准库等。",
-              "文章适合初学者，帮助他们快速上手Go语言开发。"
-            ]}
-          />
+          {blogs.map((blog) => (
+            <Link key={blog.id} to={`/blog/${blog.id}`} className={styles.blogLink}>
+              <Card
+                title={blog.title}
+                items={[
+                  blog.summary,
+                  `作者: ${blog.author} | 浏览量: ${blog.view_count}`
+                ]}
+              />
+            </Link>
+          ))}
         </div>
       </PageContainer>
-
     </Body>
-  )
+  );
 }
 
 export default Blog;
